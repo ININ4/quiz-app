@@ -2,6 +2,10 @@
 
 Na ten moment udostępnia przykładowe pytanie przez REST API.
 
+<p align="center">
+<img src="quiz_now.png" alt="quiz now" title="quiz now">
+</p>
+
 ## Struktura projektu
 
 ```
