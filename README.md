@@ -3,7 +3,7 @@
 Na ten moment udostępnia przykładowe pytanie przez REST API.
 
 <p align="center">
-<img src="quiz_now.png" alt="quiz now" title="quiz now">
+<img src="quiz_now_ver2.png" alt="quiz now" title="quiz now">
 </p>
 
 ## Struktura projektu
