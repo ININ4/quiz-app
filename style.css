@@ -1,0 +1,164 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.6s ease, color 0.6s ease;
+    overflow: hidden;
+    animation: fadeBody 1.2s ease;
+  }
+  
+  
+  body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 70%);
+    animation: moveBackground 20s infinite linear;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  
+  .container {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 600px;
+    width: 95%;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1s ease;
+  }
+  
+  
+  h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    position: relative;
+  }
+  
+  h1::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    background: #ffffff;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+    opacity: 0.5;
+    animation: pulseBar 2s infinite ease-in-out;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 2rem;
+  }
+  
+  
+  .btn-custom {
+    width: 220px;
+    margin: 12px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: all 0.35s ease-in-out;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+  }
+  
+  .btn-custom:hover {
+    transform: scale(1.08);
+    background-color: #ffffff;
+    color: #0f0c29;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    animation: pulseGlow 1s infinite alternate;
+  }
+  
+  
+  #single-panel,
+  #multi-panel,
+  #how-panel {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    animation: slideDown 0.4s ease;
+  }
+  
+ 
+  .hidden {
+    display: none;
+  }
+  
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes fadeBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes moveBackground {
+    0% { transform: translate(-25%, -25%); }
+    50% { transform: translate(25%, 25%); }
+    100% { transform: translate(-25%, -25%); }
+  }
+  
+  @keyframes pulseGlow {
+    from {
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+    to {
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  @keyframes pulseBar {
+    0% { opacity: 0.3; width: 40px; }
+    50% { opacity: 1; width: 60px; }
+    100% { opacity: 0.3; width: 40px; }
+  }
+  
+  
+  @media (max-width: 768px) {
+    .btn-custom {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    h1 {
+      font-size: 2.2rem;
+    }
+  
+    .container {
+      padding: 25px 20px;
+    }
+  }
+  
