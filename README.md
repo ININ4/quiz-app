@@ -1,147 +1,170 @@
-# Quiz App – Backend (Java + Spring Boot)
-
-Na ten moment udostępnia przykładowe pytanie przez REST API.
+# Aplikacja Quizowa (Spring Boot + HTML/JS)
 
 <p align="center">
-<img src="quiz_now_ver2.png" alt="quiz now" title="quiz now">
+<img src="quiz_now_ver3.png" alt="quiz now" title="quiz now">
 </p>
 
-## Struktura projektu
+## Wymagania
+
+- Java 17+ 
+- Maven  
+- Przeglądarka internetowa (np. Chrome)  
+- (Opcjonalnie) Postman lub inny klient HTTP
+
+## 🗂️ Struktura projektu (drzewo katalogów)
 
 ```
-quiz-app/
+quizApp/
+├── data/
+│   └── results.json              ← zapisane wyniki graczy
+│
 ├── src/
-│   └── main/
-│       ├── java/
-│       │   └── com/inin4/quizApp/
-│       │       ├── controller/         # Obsługa zapytań HTTP
-│       │       │   └── QuizController.java
-│       │       ├── model/              # Model danych (Question)
-│       │       │   └── Question.java
-│       │       └── QuizAppApplication.java  # Punkt startowy aplikacji
-│       └── resources/
-│           └── application.properties  # Plik konfiguracyjny (obecnie pusty)
-├── pom.xml                             # Plik z zależnościami Maven
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com.inin4.quizApp/
+│   │   │       ├── config/       ← konfiguracja Jacksona
+│   │   │       │   └── JacksonConfig.java
+│   │   │       ├── controller/   ← REST API
+│   │   │       │   └── QuizController.java
+│   │   │       ├── model/        ← modele danych (DTO + encje)
+│   │   │       │   ├── Question.java
+│   │   │       │   ├── Result.java
+│   │   │       │   ├── AnswerRequest.java
+│   │   │       │   └── AnswerResponse.java
+│   │   │       ├── service/      ← logika aplikacji
+│   │   │       │   ├── QuizService.java
+│   │   │       │   └── ResultService.java
+│   │   │       └── QuizAppApplication.java   ← klasa startowa Spring Boot
+│   │   │
+│   │   ├── resources/
+│   │   │   ├── static/           ← frontend (HTML + JS + CSS)
+│   │   │   │   ├── index.html
+│   │   │   │   ├── script.js
+│   │   │   │   └── style.css
+│   │   │   ├── templates/        ← (nieużywane)
+│   │   │   ├── application.properties
+│   │   │   └── questions.json    ← plik z pytaniami
+│
+├── test/                         ← testy jednostkowe
+├── pom.xml                       ← plik konfiguracji Mavena
+├── README.md                     ← dokumentacja projektu
+└── .gitignore / .gitattributes   ← ignorowanie plików tymczasowych
 ```
 
-## Jak uruchomić aplikację lokalnie (przez IDE, bez terminala)
 
-### 1. Upewnij się, że masz zainstalowane środowisko IDE
 
-Zalecane użycie:
+## Uruchomienie aplikacji lokalnie
 
-- IntelliJ IDEA (Community Edition wystarczy)
-- lub Eclipse (z wtyczką do Maven i obsługą Spring Boot)
+1. **Sklonuj repozytorium lub otwórz projekt w IDE (np. IntelliJ).**
 
-### 2. Pobierz kod projektu
-
-Pobierz projekt z GitHuba:
-
-1. Jeśli masz zainstalowanego Gita: `git clone https://github.com/ININ4/quiz-app.git`
-2. Jeśli nie masz Gita:
-  - Wejdź na GitHub.
-  - Kliknij „Code” > „Download ZIP”.
-  - Rozpakuj plik ZIP w dowolnym miejscu.
-
-### 3. Otwórz projekt w IDE
-
-#### IntelliJ IDEA:
-
-1. Otwórz IntelliJ.
-2. Wybierz „Open” i wskaż folder `quiz-app`.
-3. Poczekaj aż Maven sam zbuduje projekt.
-4. Sprawdź, czy plik `QuizAppApplication.java` znajduje się w folderze `src/main/java/com/inin4/quizApp`.
-
-#### Eclipse:
-
-1. Wybierz „File” > „Import”.
-2. Wybierz „Maven” > „Existing Maven Projects”.
-3. Wskaż folder projektu (`quiz-app`) i załaduj go.
-
-### 4. Uruchom aplikację
-
-1. W drzewie projektu znajdź plik:
-   `src/main/java/com/inin4/quizApp/QuizAppApplication.java`
-2. Kliknij prawym przyciskiem myszy i wybierz:
-   `Run 'QuizAppApplication.main()'`
-3. Aplikacja powinna się uruchomić i być dostępna pod adresem:
-   `http://localhost:8080`
-
-### 5. Sprawdź działanie
-
-Otwórz przeglądarkę i przejdź do adresu:
-
-```
-http://localhost:8080/api/question
-```
-
-Jeśli wszystko działa poprawnie, zobaczysz dane JSON z przykładowym pytaniem.
-
----
-
-## Opcjonalnie: uruchomienie przez terminal
-
-### Wymagania
-
-- Java 17+ oraz Maven zainstalowane globalnie (dostępne w terminalu)
-
-### Krok po kroku:
-
-1. Otwórz terminal (CMD lub PowerShell na Windowsie)
-2. Przejdź do katalogu z projektem, np.:
-
-```bash
-cd C:\Users\TwojaNazwa\Pulpit\quiz-app
-```
-
-lub
-
-```bash
-cd ~/Pulpit/quiz-app
-```
-
-3. Uruchom aplikację:
+2. **Zbuduj projekt i uruchom aplikację:**
 
 ```bash
 mvn spring-boot:run
 ```
 
-4. Aplikacja wystartuje pod adresem:
+3. **Dostęp do frontendowej aplikacji:**
 
 ```
-http://localhost:8080
+http://localhost:8080/index.html
 ```
 
-Wejdź na `http://localhost:8080/api/question` aby sprawdzić działanie.
+## Korzystanie przez przeglądarkę
 
----
+1. Po wejściu na stronę zobaczysz ekran startowy z wyborem trybu:
+   - Single Player
+   - Multiplayer (placeholder)
+   - How to Play (instrukcja)
 
-## Dostępne endpointy
+2. Wybierz **Single Player**, wpisz imię i rozpocznij quiz.
 
-### `GET /api/question`
+3. Po zakończeniu:
+   - zobaczysz swój wynik,
+   - dane zostaną zapisane,
+   - pojawi się **ranking wyników**.
 
-Zwraca przykładowe pytanie w formacie JSON:
+## Testowanie przez Postmana
+
+### Sprawdzenie poprawności odpowiedzi
+
+`POST http://localhost:8080/api/quiz/answer`  
+Body (JSON):
 
 ```json
 {
-  "id": "q1",
-  "question": "What is the output of System.out.println(\"Hello World\")?",
-  "options": {
-    "A": "Hello World",
-    "B": "hello world",
-    "C": "Syntax Error"
-  },
-  "correctAnswer": "A"
+  "questionId": "q1",
+  "selectedAnswer": "A"
 }
 ```
 
-Uwaga: to tylko przykład. Docelowo pytania będą wczytywane z pliku lub bazy danych, a poprawna odpowiedź nie będzie zwracana do użytkownika.
+### Zapis wyniku
 
-## Propozycje dalszych kroków
+`POST http://localhost:8080/api/quiz/result`  
+Body (JSON):
 
-- [ ] Wczytywanie pytań z pliku lub bazy danych
-- [ ] Ukrycie poprawnej odpowiedzi w danych wysyłanych do użytkownika
-- [ ] Dodanie endpointu `POST` do przesyłania odpowiedzi
-- [ ] Ocena odpowiedzi i zwracanie wyniku
-- [ ] Zapis wyników do pliku (np. `results.txt`)
-- [ ] Walidacja danych i obsługa błędów
+```json
+{
+  "playerName": "Jan",
+  "score": 8,
+  "total": 10
+}
+```
+
+### Odczyt wyników
+
+`GET http://localhost:8080/api/quiz/results`
+
+### Lista wszystkich pytań
+
+`GET http://localhost:8080/api/quiz/all`
+
+## Struktura plików
+
+### Backend:
+- `QuizController` — obsługuje wszystkie endpointy quizu i wyników.
+- `QuizService` — ładuje pytania z pliku `questions.json`.
+- `ResultService` — zapisuje i odczytuje wyniki z `data/results.json`.
+- `questions.json` — plik z pytaniami (w `resources/`).
+- `results.json` — automatycznie tworzony plik z wynikami (w `/data`).
+
+### Modele:
+- `Question` — pojedyncze pytanie z odpowiedziami.
+- `Result` — wynik gracza.
+- `AnswerRequest` — zapytanie z odpowiedzią gracza.
+- `AnswerResponse` — odpowiedź backendu: czy odpowiedź była poprawna.
+
+### Frontend:
+- `index.html` — ekran startowy + gra + ranking.
+- `style.css` — stylowanie quizu, responsywny layout.
+- `script.js` — logika quizu: nawigacja, pytania, wynik, ranking.
+
+## Funkcje aplikacji
+
+- Quiz 1-osobowy (Single Player)
+- Zapis wyniku do pliku `.json`
+- Dynamiczne pobieranie pytań z pliku
+- Wyświetlanie rankingu
+- Panel główny z wyborem trybu
+- Obsługa dat i punktacji
+- UI w języku polskim i/lub angielskim (w zależności od pliku `questions.json`)
+
+## Przykład pytania w `questions.json`
+
+```json
+{
+  "id": "q3",
+  "question": "What is the capital of France?",
+  "options": {
+    "A": "Berlin",
+    "B": "Madrid",
+    "C": "Paris"
+  },
+  "correctAnswer": "C"
+}
+```
+
+## Na później:
+
+- Możliwość wyboru kategorii quizu
+- Tryb multiplayer
+- Panel admina do edycji pytań i wyników
