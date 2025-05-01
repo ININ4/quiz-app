@@ -1,0 +1,102 @@
+[
+  {
+    "id": "q1",
+    "question": "Which movie features the line: \"Frankly, my dear, I don't give a damn.\"?",
+    "options": {
+      "A": "Gone with the Wind",
+      "B": "Casablanca",
+      "C": "Citizen Kane"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q2",
+    "question": "\"Here's looking at you, kid.\" — this quote comes from:",
+    "options": {
+      "A": "Casablanca",
+      "B": "The Maltese Falcon",
+      "C": "North by Northwest"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q3",
+    "question": "\"May the Force be with you.\" is from:",
+    "options": {
+      "A": "Star Trek",
+      "B": "Star Wars",
+      "C": "Battlestar Galactica"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q4",
+    "question": "\"I see dead people.\" — this quote is from:",
+    "options": {
+      "A": "The Sixth Sense",
+      "B": "The Others",
+      "C": "The Exorcist"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q5",
+    "question": "\"You can't handle the truth!\" — in which movie?",
+    "options": {
+      "A": "A Few Good Men",
+      "B": "The Godfather",
+      "C": "L.A. Confidential"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q6",
+    "question": "\"I'm the king of the world!\" is shouted in:",
+    "options": {
+      "A": "Braveheart",
+      "B": "Titanic",
+      "C": "The Lion King"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q7",
+    "question": "\"Life is like a box of chocolates.\" — which movie?",
+    "options": {
+      "A": "Forrest Gump",
+      "B": "Rain Man",
+      "C": "Big"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q8",
+    "question": "\"Why so serious?\" is famously said by:",
+    "options": {
+      "A": "Hannibal Lecter",
+      "B": "The Joker",
+      "C": "Tony Montana"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": "q9",
+    "question": "\"Say hello to my little friend!\" is from:",
+    "options": {
+      "A": "Scarface",
+      "B": "Goodfellas",
+      "C": "Heat"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": "q10",
+    "question": "\"To infinity and beyond!\" — from which character?",
+    "options": {
+      "A": "Woody",
+      "B": "Buzz Lightyear",
+      "C": "Mr. Incredible"
+    },
+    "correctAnswer": "B"
+  }
+]
